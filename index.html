@@ -1,41 +1,164 @@
 <!doctype html>
 <html lang="pl>"
 <head>
-  <title>Exercise 10.3a - carousel with jQuery...</title>
-  <style>
-    /* Prevents slides from flashing */
-    #slides {
-      display:none;
-    }
-  </style>
-  <link rel="text/stylesheet" href="css/example.css">
-  <link rel="text/stylesheet" href="css/font-awesome.min.css">
-  <link rel="text/stylesheet" href="css/style.css">
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  <script src="js/jquery.slides.min.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Exercise 10.3a - carousel with jQuery...</title>
+    <link rel="stylesheet" href="css/example.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" />
+<!--
+    <link rel="text/stylesheet" href="css/style.css">
+!-->
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        font: normal 15px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+        color: #232525;
+        padding-top:10px;
+      }
 
-  <script>
-    $(function(){
-      $("#slides").slidesjs({
-        width: 940,
-        height: 528
-      });
-    });
-  </script>
+      #slides {
+        display: none;
+      }
+
+      #slides .slidesjs-navigation {
+        margin-top:3px;
+      }
+
+      #slides .slidesjs-previous {
+        margin-right: 5px;
+        float: left;
+      }
+
+      #slides .slidesjs-next {
+        margin-right: 5px;
+        float: left;
+      }
+
+      .slidesjs-pagination {
+        margin: 6px 0 0;
+        float: right;
+        list-style: none;
+        padding-bottom: 20px;
+      }
+
+      .slidesjs-pagination li {
+        float: left;
+        margin: 0 1px;
+      }
+
+      .slidesjs-pagination li a {
+        display: block;
+        width: 13px;
+        height: 0;
+        padding-top: 13px;
+        background-image: url(img/pagination.png);
+        background-position: 0 0;
+        float: left;
+        overflow: hidden;
+      }
+
+      .slidesjs-pagination li a.active,
+      .slidesjs-pagination li a:hover.active {
+        background-position: 0 -13px;
+      }
+
+      .slidesjs-pagination li a:hover {
+        background-position: 0 -26px;
+      }
+
+      #slides a:link,
+      #slides a:visited {
+        color: #333;
+      }
+
+      #slides a:hover,
+      #slides a:active {
+        color: #9e2020;
+      }
+
+      .navbar {
+        overflow: hidden;
+      }
+    </style>
+
+
+    <style>
+      #slides {
+        display: none;
+      }
+
+      .container {
+        margin: 0 auto;
+      }
+
+      /* For tablets & smart phones */
+      @media (max-width: 767px) {
+        body {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        .container {
+          width: auto;
+        }
+      }
+
+      /* For smartphones */
+      @media (max-width: 480px) {
+        .container {
+          width: auto;
+        }
+      }
+
+      /* For smaller displays like laptops */
+      @media (min-width: 768px) and (max-width: 979px) {
+        .container {
+          width: 724px;
+        }
+      }
+
+      /* For larger displays */
+      @media (min-width: 1200px) {
+        .container {
+          width: 1170px;
+        }
+      }
+    </style>
+
+
+
 </head>
-<body>
+<body style="background-color: gray;">
   <div class="header">
-      <h1>Carousel - exercise 10.3a (jQuery...)</h1>
+      <h1 style="text-align: center; text-transform: uppercase; color: white; font-family: 'Open Sans', sans-serif;">Carousel - exercise 10.3a (jQuery...)</h1>
+  </div>
+  <div class="container">
+      <div id="slides">
+          <img src="https://images.unsplash.com/photo-1445620466293-d6316372ab59?auto=format&fit=crop&w=967&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <img src="https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1002&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <img src="https://images.unsplash.com/photo-1508921234172-b68ed335b3e6?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=967&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <img src="https://images.unsplash.com/photo-1463620695885-8a91d87c53d0?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=800&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
+          <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+          <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
+      </div>
   </div>
 
-  <div id="slides">
-    <img src="https://images.unsplash.com/photo-1445620466293-d6316372ab59?auto=format&fit=crop&w=967&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-    <img src="https://images.unsplash.com/photo-1489875347897-49f64b51c1f8?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1002&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-    <img src="https://images.unsplash.com/photo-1508921234172-b68ed335b3e6?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=967&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-    <img src="https://images.unsplash.com/photo-1463620695885-8a91d87c53d0?auto=format&fit=crop&w=1050&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-    <img src="https://images.unsplash.com/photo-1509395062183-67c5ad6faff9?auto=format&fit=crop&w=800&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">
-  </div>
+<!-- SCRIPTS !-->
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.slides.min.js"></script>
+<script>
+  $(function() {
+    $('#slides').slidesjs({
+      width: 900,
+      height: 500,
+      navigation: false
+    });
+  });
+</script>
+
 </body>
 </html>
